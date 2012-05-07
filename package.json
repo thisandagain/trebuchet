@@ -2,7 +2,7 @@
     "name" : "trebuchet",
     "version" : "0.1.0",
     "description" : "A node.js module for throwing email around using the Postmark API.",
-    "main" : "./index.js",
+    "main" : "./lib/index.js",
     "directories" : {
         "lib" : "./lib",
         "test" : "./test"
