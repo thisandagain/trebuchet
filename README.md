@@ -1,7 +1,7 @@
 # Trebuchet
 #### Let's chuck some email!
 
-Trebuchet is a node.js module for super simple email transactions using the [Postmark API](http://postmarkapp.com) and [Mustache](http://mustache.github.com/) for templating. Trebuchet was designed with more complex email rendering, batching and API operations in mind... if your needs are different, there are lots of other [great](https://github.com/voodootikigod/postmark.js) [options](https://github.com/andris9/Nodemailer) in the NPM sea.
+Trebuchet is a node.js module for super simple email transactions using the [Postmark API](http://postmarkapp.com) and [Mustache](http://mustache.github.com/) for templating. Trebuchet was designed with simple email rendering, batching and API operations in mind.
 
 ## Installation
     npm install trebuchet
