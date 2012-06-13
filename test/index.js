@@ -19,7 +19,6 @@ var assert    = require('assert')
 
 // # Suite
 suite
-  /*
   .addBatch({
     'Fling': {
       topic: function() {
@@ -119,7 +118,6 @@ suite
       }
     }
   })
-  */
   .addBatch({
     'Load #3 with CSS': {
       topic: function() {
