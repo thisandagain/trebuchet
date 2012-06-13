@@ -97,6 +97,42 @@ trebuchet.fling({
 });
 ```
 
+## Development Environment Setup (utilizes Mustache clear cache functionality)
+
+```javascript
+// if the value of env is not 'development' || 'DEVELOPMENT', then trebuchet ignores the cache stuff, no worries
+// this makes good use when you do something like `{ env: app.set('env') }` of course!
+var trebuchet = require('trebuchet', { apiKey: 'yourapikey', env: 'development' });
+
+// the rest of your code goes here
+// ...
+```
+
+## Template Use (Fling Pattern or Batch Sender permitted, this example is of Fling)
+
+Instead of having to pass `html`, `css`, and `text` options every time, you can simply pass a `templateName`, as long as you have defined a `templateDirectory`.
+
+```javascript
+var trebuchet = require('trebuchet', { apikey: 'yourapikey', templateDirectory: path.join(__dirname, 'templates') });
+
+trebuchet.fling({
+  params: {
+    from: 'you@domain.com',
+    to: 'someone@domain.com',
+    subject: 'This is only a test of template usage'
+  },
+  // the template property will automatically load and set the following options without you having to manually set them
+  // * html: ~/templates/fling-test/index.html
+  // * css:  ~/templates/fling-test/index.css
+  // * text: ~/templates/fling-test/index.txt
+  template: 'fling-test',
+  data: {
+    foo: 'Bar'
+  }
+}, function(err, response) {
+  // Template Win!
+});
+```
 
 ## Batch Sender (Load --> Fire Pattern)
 
