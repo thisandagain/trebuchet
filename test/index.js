@@ -31,8 +31,8 @@ suite
                     to:         argv.to,
                     subject:    'This is only a test of the fling pattern'
                 },
-                html:       'test/template/fling.html',
-                text:       'test/template/fling.txt',
+                html:       './test/template/fling.html',
+                text:       './test/template/fling.txt',
                 data:       {
                     foo:        'Bar'
                 }
@@ -69,8 +69,8 @@ suite
                     to:         argv.to,
                     subject:    'This is only a test of the load/fire pattern #1'
                 },
-                html:       'test/template/fire.html',
-                text:       'test/template/fire.txt',
+                html:       './test/template/fire.html',
+                text:       './test/template/fire.txt',
                 data:       {
                     foo:        'Bar',
                     name:       'Bubba'
@@ -103,8 +103,8 @@ suite
                     to:         argv.to,
                     subject:    'This is only a test of the load/fire pattern #2'
                 },
-                html:       'test/template/fire.html',
-                text:       'test/template/fire.txt',
+                html:       './test/template/fire.html',
+                text:       './test/template/fire.txt',
                 data:       {
                     foo:        'Bar',
                     name:       'Jane'
