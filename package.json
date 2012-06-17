@@ -1,36 +1,26 @@
 {
-    "name" : "trebuchet",
-    "version" : "0.1.2",
-    "description" : "A node.js module for throwing email around using the Postmark API.",
-    "main" : "./lib/index.js",
-    "directories" : {
-        "lib" : "./lib",
-        "test" : "./test"
-    },
-    "repository" : {
-        "type" : "git",
-        "url" : "http://github.com/diy/trebuchet.git"
-    },
-    "keywords" : [
-        "mail",
-        "email",
-        "postmark",
-        "smtp"
-    ],
-    "author" : {
-        "name" : "DIY, Co.",
-        "url" : "http://github.com/diy"
-    },
-    "license" : "Apache 2.0",
-    "dependencies": {
-        "async": "=0.1.22",
-        "mu2": "=0.5.14",
-        "request": "=2.9.202",
-        "underscore": "=1.3.3"
-    },
-    "devDependencies": {
-        "vows": "=0.6.2",
-        "optimist": "=0.3.4"
-    },
-    "engine" : { "node" : ">=0.6" }
+  "author": "DIY, Co. (https://github.com/diy)",
+  "name": "trebuchet",
+  "description": "A node.js module for throwing email around using the Postmark API.",
+  "version": "0.1.2",
+  "homepage": "https://github.com/diy/trebuchet",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/diy/trebuchet.git"
+  },
+  "main": "./index",
+  "dependencies": {
+    "async": "=0.1.22",
+    "mu2": "=0.5.14",
+    "request": "=2.9.202",
+    "underscore": "=1.3.3"
+  },
+  "devDependencies": {
+    "vows": "=0.6.2",
+    "optimist": "=0.3.4"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.6"
+  }
 }
