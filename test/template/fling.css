@@ -1,0 +1,16 @@
+body {
+  font-size: 16px;
+  line-height: 18px;
+  background-color: yellow;
+}
+
+h1 {
+  color: purple;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+}
+
+strong {
+  color: blue;
+}
