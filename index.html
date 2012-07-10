@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Trebuchet : A node.js module for throwing email around using the Postmark API." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Trebuchet</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/thisandagain/trebuchet">View on GitHub</a>
+
+          <h1 id="project_title">Trebuchet</h1>
+          <h2 id="project_tagline">A node.js module for throwing email around using the Postmark API.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/thisandagain/trebuchet/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/thisandagain/trebuchet/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Let's chuck some email!</h3>
+
+<p>Trebuchet is a node.js module for super simple email transactions using the <a href="http://postmarkapp.com">Postmark API</a> and <a href="http://mustache.github.com/">Mustache</a> with <a href="https://github.com/LearnBoost/juice">Juice</a> for templating. Trebuchet was designed with simple email rendering, batching and API operations in mind.</p>
+
+<h2>Installation</h2>
+
+<div class="highlight">
+<pre>npm install trebuchet
+</pre>
+</div>
+
+
+<h2>Basic Use (Fling Pattern)</h2>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">trebuchet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'trebuchet'</span><span class="p">)(</span><span class="s1">'yourapikey'</span><span class="p">);</span>
+
+<span class="nx">trebuchet</span><span class="p">.</span><span class="nx">fling</span><span class="p">({</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">from</span><span class="o">:</span> <span class="s1">'you@domain.com'</span><span class="p">,</span>
+        <span class="nx">to</span><span class="o">:</span> <span class="s1">'someone@domain.com'</span><span class="p">,</span>
+        <span class="nx">subject</span><span class="o">:</span> <span class="s1">'This is only a test of the fling pattern'</span>
+    <span class="p">},</span>
+    <span class="nx">html</span><span class="o">:</span> <span class="s1">'path/to/template/fling.html'</span><span class="p">,</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="s1">'path/to/template/fling.txt'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">foo</span><span class="o">:</span> <span class="s1">'Bar'</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Win!</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h2>Basic Use (Fling Pattern with HTML friendly inlined-CSS support)</h2>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">trebuchet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'trebuchet'</span><span class="p">)(</span><span class="s1">'yourapikey'</span><span class="p">);</span>
+
+<span class="nx">trebuchet</span><span class="p">.</span><span class="nx">fling</span><span class="p">({</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">from</span><span class="o">:</span> <span class="s1">'you@domain.com'</span><span class="p">,</span>
+        <span class="nx">to</span><span class="o">:</span> <span class="s1">'someone@domain.com'</span><span class="p">,</span>
+        <span class="nx">subject</span><span class="o">:</span> <span class="s1">'This is only a test of the fling pattern'</span>
+    <span class="p">},</span>
+    <span class="nx">html</span><span class="o">:</span> <span class="s1">'path/to/template/fling.html'</span><span class="p">,</span>
+    <span class="nx">css</span><span class="o">:</span> <span class="s1">'path/to/template/fling.css'</span><span class="p">,</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="s1">'path/to/template/fling.txt'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">foo</span><span class="o">:</span> <span class="s1">'Bar'</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Win!</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h2>Batch Sender (Load --&gt; Fire Pattern)</h2>
+
+<p>The batch sender uses the <a href="http://developer.postmarkapp.com/developer-build.html#batching-messages">Postmark API's batch method</a> to support sending groups of messages (up to 500 at a time).</p>
+
+<p><strong>NOTE</strong>: You can also pass a css variable to load a stylesheet that will be inlined using <code>juice</code>.</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">trebuchet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'trebuchet'</span><span class="p">)(</span><span class="s1">'yourapikey'</span><span class="p">);</span>
+
+<span class="nx">trebuchet</span><span class="p">.</span><span class="nx">load</span><span class="p">({</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">from</span><span class="o">:</span> <span class="s1">'you@domain.com'</span><span class="p">,</span>
+        <span class="nx">to</span><span class="o">:</span> <span class="s1">'someone@domain.com'</span><span class="p">,</span>
+        <span class="nx">subject</span><span class="o">:</span> <span class="s1">'This is only a test of the load/fire pattern'</span>
+    <span class="p">},</span>
+    <span class="nx">html</span><span class="o">:</span> <span class="s1">'path/to/template/fire.html'</span><span class="p">,</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="s1">'path/to/template/fire.txt'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">foo</span><span class="o">:</span> <span class="s1">'Bar'</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s1">'Bubba'</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Loaded!</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<div class="highlight">
+<pre><span class="nx">trebuchet</span><span class="p">.</span><span class="nx">fire</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Win!</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h2>Templating</h2>
+
+<p>Trebuchet uses <a href="http://mustache.github.com/">Mustache</a> templates to make sending dynamic HTML and plain-text emails super-duper simple.</p>
+
+<p><strong>NEW</strong>: We've added support <a href="https://github.com/LearnBoost/juice">Juice</a> which allows one to pass a <code>css</code> variable and inline the CSS with the HTML template for email-friendly CSS... KA POW! (thanks to <a href="https://github.com/niftylettuce" class="user-mention">@niftylettuce</a>)</p>
+
+<p>An example template:</p>
+
+<div class="highlight">
+<pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>{{greeting}}<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre>
+</div>
+
+
+<p>With example data:</p>
+
+<div class="highlight">
+<pre><span class="p">{</span>
+    <span class="nx">greeting</span><span class="o">:</span> <span class="s1">'Hello World!'</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Result (without CSS argument):</p>
+
+<div class="highlight">
+<pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre>
+</div>
+
+
+<p>Result (with CSS argument, e.g. "some/path/to/template.css"):</p>
+
+<div class="highlight">
+<pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;body</span> <span class="na">style=</span><span class="s">"color:yellow;background-color:black;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre>
+</div>
+
+
+<p>Instead of having to pass <code>html</code>, <code>css</code>, and <code>text</code> options every time, you can simply pass a <code>templateName</code>, as long as you have defined a <code>templateDirectory</code>.</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">trebuchet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'trebuchet'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">apikey</span><span class="o">:</span> <span class="s1">'yourapikey'</span><span class="p">,</span> <span class="nx">templateDirectory</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'templates'</span><span class="p">)</span> <span class="p">});</span>
+
+<span class="nx">trebuchet</span><span class="p">.</span><span class="nx">fling</span><span class="p">({</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">from</span><span class="o">:</span> <span class="s1">'you@domain.com'</span><span class="p">,</span>
+        <span class="nx">to</span><span class="o">:</span> <span class="s1">'someone@domain.com'</span><span class="p">,</span>
+        <span class="nx">subject</span><span class="o">:</span> <span class="s1">'This is only a test of template usage'</span>
+    <span class="p">},</span>
+        <span class="c1">// the template property will automatically load and set the following options without you having to manually set them</span>
+        <span class="c1">// * html: ~/templates/fling-test/index.html</span>
+        <span class="c1">// * css:  ~/templates/fling-test/index.css</span>
+        <span class="c1">// * text: ~/templates/fling-test/index.txt</span>
+        <span class="nx">template</span><span class="o">:</span> <span class="s1">'fling-test'</span><span class="p">,</span>
+        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">foo</span><span class="o">:</span> <span class="s1">'Bar'</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Template Win!</span>
+    <span class="p">});</span>
+</pre>
+</div>
+
+
+<h2>Testing</h2>
+
+<div class="highlight">
+<pre>node <span class="nb">test</span>/* --from <span class="s2">"you@domain.com"</span> --to <span class="s2">"someone@domain.com"</span>
+</pre>
+</div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Trebuchet maintained by <a href="https://github.com/thisandagain">thisandagain</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-33281153-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
