@@ -4,6 +4,8 @@
 
 Trebuchet is a node.js module for super simple email transactions using the [Postmark API](http://postmarkapp.com) and [Mustache](http://mustache.github.com/) with [Juice](https://github.com/LearnBoost/juice) for templating. Trebuchet was designed with simple email rendering, batching and API operations in mind.
 
+[![Build Status](https://secure.travis-ci.org/thisandagain/trebuchet.png?branch=master)](http://travis-ci.org/thisandagain/trebuchet)
+
 ## Installation
 
 ```bash
@@ -158,6 +160,3 @@ trebuchet.fling({
 ```bash
 node test/index.js --from "you@domain.com" --to "someone@domain.com"
 ```
-
-## Build Status
-[![Build Status](https://secure.travis-ci.org/thisandagain/trebuchet.png?branch=master)](http://travis-ci.org/thisandagain/trebuchet)
