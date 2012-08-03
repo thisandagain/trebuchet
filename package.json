@@ -1,6 +1,6 @@
 {
   "name": "trebuchet",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A node.js module for throwing email around using the Postmark API.",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/diy/trebuchet.git"
+    "url": "http://github.com/thisandagain/trebuchet.git"
   },
   "keywords": [
     "mail",
