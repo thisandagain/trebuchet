@@ -156,5 +156,8 @@ trebuchet.fling({
 ## Testing
 
 ```bash
-node test/* --from "you@domain.com" --to "someone@domain.com"
+node test/index.js --from "you@domain.com" --to "someone@domain.com"
 ```
+
+## Build Status
+[![Build Status](https://secure.travis-ci.org/thisandagain/trebuchet.png?branch=master)](http://travis-ci.org/thisandagain/trebuchet)
