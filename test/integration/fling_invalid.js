@@ -15,7 +15,7 @@ trebuchet.fling({
 }, function (err, result) {
     test('integration', function (t) {
         t.type(err, 'string', 'error object is a string');
-        t.equal(err, 'Invalid html template file path: /Users/asliwinski/Documents/Projects/trebuchet/test/integration/../fixtures/lkjhasdflkjhqwef.html', 'expected error message');
+        t.equal(err.split(':')[0], 'Invalid html template file path', 'expected error');
         t.end();
     });
 });
