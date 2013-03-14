@@ -23,8 +23,8 @@ trebuchet.fling({
         to: 'someone@domain.com',
         subject: 'This is only a test of the fling pattern'
     },
-    html: 'path/to/template/fling.html',
-    text: 'path/to/template/fling.txt',
+    html: __dirname + '/path/to/template/fling.html',
+    text: __dirname + '/path/to/template/fling.txt',
     data: {
         foo: 'Bar'
     }
@@ -44,9 +44,9 @@ trebuchet.fling({
         to: 'someone@domain.com',
         subject: 'This is only a test of the fling pattern'
     },
-    html: 'path/to/template/fling.html',
-    css: 'path/to/template/fling.css',
-    text: 'path/to/template/fling.txt',
+    html: __dirname + '/path/to/template/fling.html',
+    css: __dirname + '/path/to/template/fling.css',
+    text: __dirname + '/path/to/template/fling.txt',
     data: {
         foo: 'Bar'
     }
@@ -70,8 +70,8 @@ trebuchet.load({
         to: 'someone@domain.com',
         subject: 'This is only a test of the load/fire pattern'
     },
-    html: 'path/to/template/fire.html',
-    text: 'path/to/template/fire.txt',
+    html: __dirname + '/path/to/template/fire.html',
+    text: __dirname + '/path/to/template/fire.txt',
     data: {
         foo: 'Bar',
         name: 'Bubba'
@@ -91,7 +91,7 @@ trebuchet.fire(function (err, response) {
 
 Trebuchet uses [Mustache](http://mustache.github.com/) templates to make sending dynamic HTML and plain-text emails super-duper simple.
 
-**NEW**: We've added support [Juice](https://github.com/LearnBoost/juice) which allows one to pass a `css` variable and inline the CSS with the HTML template for email-friendly CSS... KA POW! (thanks to @niftylettuce)
+**NEW**: We've added support [Juice](https://github.com/LearnBoost/juice) which allows one to pass a `css` variable and inline the CSS with the HTML template for email-friendly CSS... KA POW!
 
 An example template:
 
@@ -131,32 +131,8 @@ Result (with CSS argument, e.g. "some/path/to/template.css"):
 </html>
 ```
 
-Instead of having to pass `html`, `css`, and `text` options every time, you can simply pass a `templateName`, as long as you have defined a `templateDirectory`.
-
-```javascript
-var trebuchet = require('trebuchet', { apikey: 'yourapikey', templateDirectory: path.join(__dirname, 'templates') });
-
-trebuchet.fling({
-    params: {
-        from: 'you@domain.com',
-        to: 'someone@domain.com',
-        subject: 'This is only a test of template usage'
-    },
-        // the template property will automatically load and set the following options without you having to manually set them
-        // * html: ~/templates/fling-test/index.html
-        // * css:  ~/templates/fling-test/index.css
-        // * text: ~/templates/fling-test/index.txt
-        template: 'fling-test',
-        data: {
-            foo: 'Bar'
-        }
-    }, function(err, response) {
-        // Template Win!
-    });
-```
-
 ## Testing
 
 ```bash
-node test/index.js --from "you@domain.com" --to "someone@domain.com"
+npm test
 ```
