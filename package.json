@@ -1,10 +1,10 @@
 {
   "name": "trebuchet",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "A node.js module for throwing email around using the Postmark API.",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "node ./test/index.js --from nyan@domain.com --to cat@domain.com"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -18,21 +18,20 @@
     "juice",
     "template"
   ],
-  "author": {
-    "name": "DIY, Co.",
-    "url": "https://github.com/diy"
-  },
+  "author": "Andrew Sliwinski <andrew@diy.org>",
+  "contributors": [
+    "Nick Baugh <niftylettuce@gmail.com>"
+  ],
   "license": "Apache 2.0",
   "dependencies": {
-    "async": "0.1.X",
-    "mu2": "0.5.X",
-    "request": "2.9.X",
-    "underscore": "1.3.X",
-    "juice": "https://github.com/niftylettuce/juice/tarball/master"
+    "juice": "~0.2.0",
+    "mu2": "~0.5.17",
+    "request": "~2.14.0",
+    "underscore": "~1.4.4"
   },
   "devDependencies": {
-    "tap": "0.3.X",
-    "optimist": "=0.3.4"
+    "codebux": "~0.1.2",
+    "tap": "~0.4.0"
   },
   "engine": {
     "node": ">=0.6"
