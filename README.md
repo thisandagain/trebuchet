@@ -131,6 +131,27 @@ Result (with CSS argument, e.g. "some/path/to/template.css"):
 </html>
 ```
 
+## Pre-rendered content
+
+Trebuchet also accepts pre-rendered strings and buffers. Simply add the prerendered flag and ommit the data in your options.
+
+```javascript
+var trebuchet = require('trebuchet')('yourapikey');
+
+trebuchet.load({
+    params: {
+        from: 'you@domain.com',
+        to: 'someone@domain.com',
+        subject: 'Sending email using prerendred texts'
+    },
+    prerendered: true,
+    html: '<h2>This email was rendered externally!</h2>', //alternatively, pass in a buffer
+    text: 'This email was rendered externally!',
+}, function (err, response) {
+    // Loaded!
+});
+```
+
 ## Testing
 
 ```bash
